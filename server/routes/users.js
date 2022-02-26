@@ -20,6 +20,33 @@ userRouter.post("/register", async (req, res) => {
       });
     }
   });
+
+  userRouter.get("/login", async (req, res) => {
+    try {
+        let user = await User.findOne({
+            registerEmail: req.body.loginEmail,
+            registerPassword: req.body.loginPassword
+        });
+
+        if(user){
+            res.status(200).json({
+                status: 200,
+                data:user
+            });
+        }
+        else{
+            res.status(400).json({
+                status: 400,
+                message: "Wrong email or password",
+              });
+        }
+    } catch (err) {
+      res.status(400).json({
+        status: 400,
+        message: err.message,
+      });
+    }
+  });
   
 
 module.exports=userRouter;
