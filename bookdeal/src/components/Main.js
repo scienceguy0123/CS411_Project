@@ -32,6 +32,7 @@ class Main extends Component{
             <div>
                 <Header registerUser = {this.props.registerUser} 
                         loginUser = {this.props.loginUser}
+                        user={this.props.user}
                         />
                 
             </div>

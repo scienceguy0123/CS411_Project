@@ -19,7 +19,7 @@ export const User = (state ={
                             return{
                                 ...state,
                                 isLoading: false,
-                                user: action.creds,
+                                user: action.user,
                                 errMess: null,
                                 isAuthenticated: true
                             }
