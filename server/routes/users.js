@@ -12,6 +12,7 @@ userRouter.post("/register", async (req, res) => {
       res.status(200).json({
         status: 200,
         data: user,
+        success:true
       });
     } catch (err) {
       res.status(400).json({
@@ -50,22 +51,4 @@ userRouter.post("/register", async (req, res) => {
   
 
 module.exports=userRouter;
-// const dbConnect = dbo.getDb();
-// const userCredentials = {
-//     email: req.body.registerEmail,
-//     password: req.body.registerPassword1
-// }
-
-// dbConnect
-//     .collection("users")
-//     .insertOne(userCredentials, function(err, result){
-//         if(err){
-//             res.status(400).send("Error registering user: " + err);
-//         }else{
-//             console.log(`Added a new match with id ${result.insertedId}`);
-//             res.status(200).send(`Added a new match with id ${result.insertedId}`)
-//         }
-//     })
-
-// })
 
