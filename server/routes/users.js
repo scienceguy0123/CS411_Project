@@ -18,11 +18,12 @@ userRouter.post("/register", async (req, res) => {
       res.status(400).json({
         status: 400,
         message: err.message,
+        success:false
       });
     }
   });
 
-  userRouter.get("/login", async (req, res) => {
+  userRouter.post("/login", async (req, res) => {
     try {
         let user = await User.findOne({
             registerEmail: req.body.loginEmail,
@@ -32,18 +33,21 @@ userRouter.post("/register", async (req, res) => {
         if(user){
             res.status(200).json({
                 status: 200,
-                data:user
+                data:user,
+                success: true
             });
         }
         else{
             res.status(400).json({
                 status: 400,
+                success: false,
                 message: "Wrong email or password",
               });
         }
     } catch (err) {
       res.status(400).json({
         status: 400,
+        success: false,
         message: err.message,
       });
     }
