@@ -21,6 +21,8 @@ class Header extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.testPrint = this.testPrint.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+
     }
     
     handleLoginModal() {
@@ -49,7 +51,12 @@ class Header extends Component{
         event.preventDefault();
         this.handleRegisterModal();
         this.props.registerUser({registerEmail: this.state.registerEmail, registerPassword1: this.state.registerPassword1});
-
+    }
+    
+    handleLogin(event){
+        event.preventDefault();
+        this.handleLoginModal();
+        this.props.loginUser({loginEmail: this.state.loginEmail, loginPassword: this.state.loginPassword});
     }
 
     testPrint() {
@@ -97,7 +104,7 @@ class Header extends Component{
                             onChange={this.handleChange}/>
                         </Form.Group>
 
-                        <Button  variant="primary" type="submit" onClick={this.testPrint}>
+                        <Button  variant="primary" type="submit" onClick={this.handleLogin}>
                             Submit
                         </Button>
                     </Form>
