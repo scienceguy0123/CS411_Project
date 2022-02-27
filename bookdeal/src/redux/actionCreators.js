@@ -89,7 +89,8 @@ export const loginRequest = (creds) =>{
 
 export const loginSuccess = (response) => {
     return {
-        type: ActionTypes.LOGIN_SUCCESS
+        type: ActionTypes.LOGIN_SUCCESS,
+        user: response.data.registerEmail
 
     }
 }

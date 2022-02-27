@@ -69,12 +69,25 @@ class Header extends Component{
                 <Navbar bg="dark" variant="dark">
                     <Container>
                     <Navbar.Brand href="#home">BookDeal</Navbar.Brand>
-                    <Nav className="ms-auto" onSelect = {this.handleLoginModal}>
-                        <Nav.Link href="#features">Login</Nav.Link>
+                    { !this.props.user.isAuthenticated ? 
+                        <>
+                        <Nav className="ms-auto" onSelect = {this.handleLoginModal}>
+                            <Nav.Link href="#features">Login</Nav.Link>
+                        </Nav>
+                        <Nav onSelect = {this.handleRegisterModal}>
+                            <Nav.Link href="#pricing">Register</Nav.Link>
+                        </Nav>
+                        </>
+
+                    :
+                    <Nav className="ms-auto" >
+                        <Navbar.Brand>{`Hi, ${this.props.user.user}`}</Navbar.Brand>
+
                     </Nav>
-                    <Nav onSelect = {this.handleRegisterModal}>
-                        <Nav.Link href="#pricing">Register</Nav.Link>
-                    </Nav>
+
+                    }
+
+                    
                     </Container>
                 </Navbar>
                 
