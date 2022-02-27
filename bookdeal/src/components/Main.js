@@ -1,5 +1,22 @@
 import React, {Component} from 'react';
 import Header from './Header.js';
+import{useSelector, useDispatch} from 'react-redux';
+import {connect} from 'react-redux';
+import {registerUser} from '../redux/actionCreators.js';
+
+
+
+const mapStateToProps = state =>{
+    return{
+        register: state.register
+    }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        registerUser: (creds) => dispatch(registerUser(creds))
+    }
+}
 
 class Main extends Component{
     constructor(props){
@@ -11,7 +28,7 @@ class Main extends Component{
     render() {
         return(
             <div>
-                <Header />
+                <Header registerUser = {this.props.registerUser} />
                 
             </div>
 
@@ -21,4 +38,4 @@ class Main extends Component{
     }
 }
 
-export default Main;
+export default (connect(mapStateToProps, mapDispatchToProps)(Main));
