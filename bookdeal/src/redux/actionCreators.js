@@ -101,3 +101,14 @@ export const loginError = (message) => {
         message:message
     }
 }
+
+export const logoutUser = () => (dispatch) =>{
+    dispatch(logoutSuccess())
+
+}
+
+export const logoutSuccess = () => {
+    return {
+        type: ActionTypes.LOGOUT_SUCCESS,
+    }
+}
