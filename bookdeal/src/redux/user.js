@@ -31,6 +31,17 @@ export const User = (state ={
                                 errMess: action.message,
                                 isAuthenticated: false
                             }
+
+                        case ActionTypes.LOGOUT_SUCCESS:
+                            return{
+                                ...state,
+                                isLoading: false,
+                                user: null,
+                                errMess: null,
+                                isAuthenticated: false
+                            }
+
+
                         default:
                             return state;
                     }  
