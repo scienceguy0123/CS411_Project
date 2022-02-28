@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Nav, Navbar, Container, Modal, Button, Form } from 'react-bootstrap';
+import {Nav, Navbar, NavDropdown, Container, Modal, Button, Form } from 'react-bootstrap';
 
 class Header extends Component{
     constructor(props){
@@ -72,10 +72,10 @@ class Header extends Component{
                     { !this.props.user.isAuthenticated ? 
                         <>
                         <Nav className="ms-auto" onSelect = {this.handleLoginModal}>
-                            <Nav.Link href="#features">Login</Nav.Link>
+                            <Nav.Link href="#login">Login</Nav.Link>
                         </Nav>
                         <Nav onSelect = {this.handleRegisterModal}>
-                            <Nav.Link href="#pricing">Register</Nav.Link>
+                            <Nav.Link href="#register">Register</Nav.Link>
                         </Nav>
                         </>
 
@@ -83,6 +83,11 @@ class Header extends Component{
                     <Nav className="ms-auto" >
                         <Navbar.Brand>{`Hi, ${this.props.user.user}`}</Navbar.Brand>
 
+                        <NavDropdown title="Menu" id="basic-nav-dropdown">
+                            <Nav  onSelect = {this.props.logoutUser}>
+                                <NavDropdown.Item href="#logout">Log Out</NavDropdown.Item>
+                            </Nav>
+                        </NavDropdown>
                     </Nav>
 
                     }
