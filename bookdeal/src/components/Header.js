@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Nav, Navbar, NavDropdown, Container, Modal, Button, Form } from 'react-bootstrap';
+import { Routes, Route, Link } from 'react-router-dom';
 
 class Header extends Component{
     constructor(props){
@@ -68,7 +69,7 @@ class Header extends Component{
             <>
                 <Navbar bg="dark" variant="dark">
                     <Container>
-                    <Navbar.Brand href="#home">BookDeal</Navbar.Brand>
+                    <Link to="/"><Navbar.Brand >BookDeal</Navbar.Brand></Link>
                     { !this.props.user.isAuthenticated ? 
                         <>
                         <Nav className="ms-auto" onSelect = {this.handleLoginModal}>
@@ -84,6 +85,11 @@ class Header extends Component{
                         <Navbar.Brand>{`Hi, ${this.props.user.user}`}</Navbar.Brand>
 
                         <NavDropdown title="Menu" id="basic-nav-dropdown">
+                            <Nav  >
+                                <Link to="/post_book">
+                                    <NavDropdown.Item href="#post">Post a Book</NavDropdown.Item>
+                                </Link>
+                            </Nav>
                             <Nav  onSelect = {this.props.logoutUser}>
                                 <NavDropdown.Item href="#logout">Log Out</NavDropdown.Item>
                             </Nav>
