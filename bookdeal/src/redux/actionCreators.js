@@ -1,6 +1,10 @@
 import * as ActionTypes from './actionTypes';
 
+<<<<<<< HEAD
 let baseUrl = 'http://localhost:3001'
+=======
+let baseUrl = 'http://localhost:3001';
+>>>>>>> chou
 
 
 export const registerUser = (creds) => (dispatch) =>{
@@ -73,7 +77,11 @@ export const loginUser = (creds) => (dispatch) =>{
         }else{
             console.log(response);
             let error = new Error('Error: ' + response.message);
+<<<<<<< HEAD
             error.reposne = response;
+=======
+            error.response = response;
+>>>>>>> chou
             throw error;
         }
     })
@@ -111,4 +119,167 @@ export const logoutSuccess = () => {
     return {
         type: ActionTypes.LOGOUT_SUCCESS,
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+export const postBook = (info) => (dispatch) => {
+    dispatch(postBookRequest());
+
+    return fetch(`${baseUrl}/postBook`, {
+        method: 'POST',
+        body: JSON.stringify(info),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.success){
+            console.log(response);
+            dispatch(postBookSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(postBookFailure(error.message)));
+}
+
+export const postBookRequest = () => ({
+    type: ActionTypes.POST_BOOK_REQUEST
+});
+
+export const postBookSuccess = (info) => ({
+    type: ActionTypes.POST_BOOK_SUCCESS,
+    payload: info
+});
+
+export const postBookFailure = (errMess) => ({
+    type: ActionTypes.POST_BOOK_FAILURE,
+    payload: errMess
+})
+
+export const fetchLatestBooks = () => (dispatch) => {
+    dispatch(fetchBooksRequest());
+
+    return fetch(`${baseUrl}/books/latest`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.success){
+            console.log(response);
+            dispatch(fetchBooksSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(fetchBooksFailure(error.message)));
+}
+export const clearFetchBook = () => (dispatch) =>{
+    dispatch(cleanFetchBook());
+}
+export const cleanFetchBook = () => ({
+    type:ActionTypes.CLEAN_BOOKS
+});
+
+export const fetchBooksRequest = () => ({
+    type: ActionTypes.FETCH_BOOKS_REQUEST
+});
+
+export const fetchBooksSuccess = (info) => ({
+    type: ActionTypes.FETCH_BOOKS_SUCCESS,
+    payload: info
+});
+
+export const fetchBooksFailure = (errMess) => ({
+    type: ActionTypes.FETCH_BOOKS_FAILURE,
+    payload: errMess
+})
+
+export const fetchBookId = (bookId) => (dispatch) => {
+    dispatch(fetchBooksRequest());
+
+    return fetch(`${baseUrl}/books/id/${bookId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.success){
+            console.log(response);
+            dispatch(fetchBooksSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(fetchBooksFailure(error.message)));
+}
+
+export const fetchGBook = (title, author) => (dispatch) => {
+    dispatch(fetchGBooksRequest());
+
+    title = title.replace(" ", "+");
+    author = author.replace(" ", "+");
+    return fetch(`${baseUrl}/books/googleBook/${title}/${author}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.success){
+            console.log(response);
+            dispatch(fetchGBooksSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(fetchGBooksFailure(error.message)));
+}
+
+export const clearGBook = () => (dispatch) =>{
+    dispatch(cleanGBook());
+}
+
+export const cleanGBook = () => ({
+    type:ActionTypes.CLEAN_GBOOK
+});
+
+export const fetchGBooksRequest = () => ({
+    type: ActionTypes.FETCH_GBOOKS_REQUEST
+});
+
+export const fetchGBooksSuccess = (info) => ({
+    type: ActionTypes.FETCH_GBOOKS_SUCCESS,
+    payload: info.data.items[0]
+});
+
+export const fetchGBooksFailure = (errMess) => ({
+    type: ActionTypes.FETCH_GBOOKS_FAILURE,
+    payload: errMess
+})
+>>>>>>> chou

@@ -12,4 +12,7 @@ To run back end:
 3. run "node index.js" in terminal
 4. (optional) go to  "http://localhost:3001"
 
+<<<<<<< HEAD
 testingtesting testing
+=======
+>>>>>>> chou
