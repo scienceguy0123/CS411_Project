@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
 import Header from './Header.js';
-<<<<<<< HEAD
-import{useSelector, useDispatch} from 'react-redux';
-import {connect} from 'react-redux';
-import {registerUser, loginUser, logoutUser} from '../redux/actionCreators.js';
-
-
-=======
 import Home from './Home.js';
 import Posting from './Posting.js';
 import BookPage from './BookPage.js';
@@ -16,17 +9,10 @@ import {registerUser, loginUser, logoutUser, postBook,
     fetchLatestBooks, fetchBookId, fetchGBook, clearGBook, cleanFetchBook} from '../redux/actionCreators.js';
 
 import {BrowserRouter,Routes,Route, Navigate} from "react-router-dom";
->>>>>>> chou
 
 const mapStateToProps = state =>{
     return{
         register: state.register,
-<<<<<<< HEAD
-        user: state.user
-    }
-}
-
-=======
         user: state.user,
         postBook: state.postBook,
         fetchBooks: state.fetchBooks,
@@ -34,14 +20,10 @@ const mapStateToProps = state =>{
     }
 }
  
->>>>>>> chou
 const mapDispatchToProps = (dispatch) =>{
     return {
         registerUser: (creds) => dispatch(registerUser(creds)),
         loginUser: (creds) => dispatch(loginUser(creds)),
-<<<<<<< HEAD
-        logoutUser: () => dispatch(logoutUser())
-=======
         logoutUser: () => dispatch(logoutUser()),
         postBook: (book) => dispatch(postBook(book)),
         fetchLatestBooks: () => dispatch(fetchLatestBooks()),
@@ -49,7 +31,6 @@ const mapDispatchToProps = (dispatch) =>{
         fetchGBook: (title, author) => dispatch(fetchGBook(title, author)),
         clearGBook: () => dispatch(clearGBook()),
         cleanFetchBook: () => dispatch(cleanFetchBook())
->>>>>>> chou
     }
 }
 
@@ -60,9 +41,6 @@ class Main extends Component{
         this.state = {}
     }
 
-<<<<<<< HEAD
-    render() {
-=======
 
 
 
@@ -70,7 +48,6 @@ class Main extends Component{
     render() {
 
 
->>>>>>> chou
         return(
             <div>
                 <Header registerUser = {this.props.registerUser} 
@@ -78,9 +55,6 @@ class Main extends Component{
                         logoutUser = {this.props.logoutUser}
                         user={this.props.user}
                         />
-<<<<<<< HEAD
-                
-=======
 
          
 
@@ -109,7 +83,6 @@ class Main extends Component{
                         <Route path="*" element={<Navigate to="/" replace />}/>
 
                     </Routes>
->>>>>>> chou
             </div>
 
 

@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {Nav, Navbar, NavDropdown, Container, Modal, Button, Form } from 'react-bootstrap';
-<<<<<<< HEAD
-=======
 import { Routes, Route, Link } from 'react-router-dom';
->>>>>>> chou
 
 class Header extends Component{
     constructor(props){
@@ -72,11 +69,7 @@ class Header extends Component{
             <>
                 <Navbar bg="dark" variant="dark">
                     <Container>
-<<<<<<< HEAD
-                    <Navbar.Brand href="#home">BookDeal</Navbar.Brand>
-=======
                     <Link to="/"><Navbar.Brand >BookDeal</Navbar.Brand></Link>
->>>>>>> chou
                     { !this.props.user.isAuthenticated ? 
                         <>
                         <Nav className="ms-auto" onSelect = {this.handleLoginModal}>
@@ -92,14 +85,11 @@ class Header extends Component{
                         <Navbar.Brand>{`Hi, ${this.props.user.user}`}</Navbar.Brand>
 
                         <NavDropdown title="Menu" id="basic-nav-dropdown">
-<<<<<<< HEAD
-=======
                             <Nav  >
                                 <Link to="/post_book">
                                     <NavDropdown.Item href="#post">Post a Book</NavDropdown.Item>
                                 </Link>
                             </Nav>
->>>>>>> chou
                             <Nav  onSelect = {this.props.logoutUser}>
                                 <NavDropdown.Item href="#logout">Log Out</NavDropdown.Item>
                             </Nav>

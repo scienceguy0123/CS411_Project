@@ -4,19 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-<<<<<<< HEAD
-=======
 import { BrowserRouter } from "react-router-dom";
->>>>>>> chou
 
 
 
 ReactDOM.render(
-<<<<<<< HEAD
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-=======
       <React.StrictMode>
             <BrowserRouter>
 
@@ -25,7 +17,6 @@ ReactDOM.render(
 
       </React.StrictMode>
 
->>>>>>> chou
 ,
   document.getElementById('root')
 );

@@ -11,13 +11,9 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-dom": "^17.0.2",
-<<<<<<< HEAD
-    "react-redux": "^7.2.6",
-=======
     "react-image-file-resizer": "^0.4.7",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
->>>>>>> chou
     "react-scripts": "5.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",

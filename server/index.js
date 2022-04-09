@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-var userRouter = require('./routes/users');
-=======
 let userRouter = require('./routes/users');
 let postBookRouter = require('./routes/postBook');
 let booksRouter = require('./routes/books')
->>>>>>> chou
 const mongoose = require('mongoose');
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -27,11 +23,6 @@ mongoose.connect(dbUrl, (err) => {
 })
 app.use('/users', userRouter);
 
-<<<<<<< HEAD
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-=======
 app.use('/postBook', postBookRouter);
 
 app.use('/books', booksRouter);
@@ -41,7 +32,6 @@ app.get('/', (req, res) => {
 });
 
 
->>>>>>> chou
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

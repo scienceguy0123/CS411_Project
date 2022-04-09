@@ -1,10 +1,6 @@
 import * as ActionTypes from './actionTypes';
 
-<<<<<<< HEAD
-let baseUrl = 'http://localhost:3001'
-=======
 let baseUrl = 'http://localhost:3001';
->>>>>>> chou
 
 
 export const registerUser = (creds) => (dispatch) =>{
@@ -77,11 +73,7 @@ export const loginUser = (creds) => (dispatch) =>{
         }else{
             console.log(response);
             let error = new Error('Error: ' + response.message);
-<<<<<<< HEAD
-            error.reposne = response;
-=======
             error.response = response;
->>>>>>> chou
             throw error;
         }
     })
@@ -119,9 +111,6 @@ export const logoutSuccess = () => {
     return {
         type: ActionTypes.LOGOUT_SUCCESS,
     }
-<<<<<<< HEAD
-}
-=======
 }
 
 export const postBook = (info) => (dispatch) => {
@@ -282,4 +271,3 @@ export const fetchGBooksFailure = (errMess) => ({
     type: ActionTypes.FETCH_GBOOKS_FAILURE,
     payload: errMess
 })
->>>>>>> chou

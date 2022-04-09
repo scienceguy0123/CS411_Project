@@ -10,19 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.2",
-<<<<<<< HEAD
-=======
     "config": "^3.3.7",
->>>>>>> chou
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "mongodb": "^4.4.0",
     "mongoose": "^6.2.3",
-<<<<<<< HEAD
-    "morgan": "^1.10.0"
-=======
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.7"
->>>>>>> chou
   }
 }
