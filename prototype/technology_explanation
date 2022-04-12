@@ -1,0 +1,7 @@
+Reasoning for Technology Stack
+We choose to use the MERN stack, namely React.js (front-end), Express.js (back-end), and MongoDB Atlas (database). 
+Since the usage of MERN stack is highly documented, it makes it easier for us to consult different sources whenever we are having coding problems. 
+Additionally, the MERN stack relies only on JavaScript as its only language, so we can focus on the logic without worrying about switching between syntax. 
+We choose React.js for our front-end framework, because it provides us with reusable components that reduce development time – however, not compromising the complexity of our interface. 
+We choose Express.js because it is a simpler version of Node.js with additional functionality in terms of middleware, controller, and routing, which is important when scaling to improve performance. 
+It is also more widely used for web applications, and requires less coding time. Since we are using the MERN stack, we use MongoDB as the database framework which is known to be highly scalable in terms of data management.
