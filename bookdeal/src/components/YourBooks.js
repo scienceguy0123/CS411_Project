@@ -1,20 +1,20 @@
 import React, {Component, useEffect} from 'react';
+import YourBooksCard from './YourBooksCard';
 import BookCard from './BookCard';
 import {Nav, Navbar, NavDropdown, Col, Row, Container, Modal, Button, Form } from 'react-bootstrap';
 import { Routes, Route, Link, useParams } from 'react-router-dom';
 
 
-function CategoryPage(props){
+function YourBooks(props){
 
-    const {categoryName} = useParams();
+    const {email} = useParams();
 
     useEffect(() => {
- 
-        props.fetchBookCategory(categoryName);
-        props.clearGBook();
+        props.cleanFetchBook();
+        props.fetchYourBooks(email);
     }, [])
 
-    if( props.fetchBooks.books == null || !Array.isArray(props.fetchBooks.books.data)){
+    if( props.fetchBooks.isLoading || !Array.isArray(props.fetchBooks.books.data) ){
         return(
             <div></div>
         )
@@ -25,7 +25,10 @@ function CategoryPage(props){
             <Row>
                 {props.fetchBooks.books.data.map((book) => (
                     <Col className="mt-5" key={book._id} >
-                        <BookCard  book={book}/>
+                        <YourBooksCard  
+                        user = {props.user}
+                        deleteYourBook={props.deleteYourBook}
+                        book={book}/>
                     </Col>
                 ))}
             </Row>
@@ -36,4 +39,4 @@ function CategoryPage(props){
 }
 
 
-export default CategoryPage;
+export default YourBooks;

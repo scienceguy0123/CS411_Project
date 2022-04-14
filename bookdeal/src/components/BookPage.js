@@ -14,14 +14,15 @@ function BookPage(props){
     const [id, setId] = useState(bookId);
 
     useEffect(() => {
-        if(props.fetchBooks.books != null && props.fetchBooks.books.data.length > 1 ){
+        if(props.fetchBooks.books != null && Array.isArray(props.fetchBooks.books.data) ){
             props.cleanFetchBook();
+            // props.clearGBook();
         }
         if(props.fetchBooks.books == null && props.fetchBooks.isLoading == false){
             props.fetchBookId(bookId);
         }
         if(props.fetchBooks.books != null  && 
-            props.fetchBooks.books.data.length != 4 &&
+            !Array.isArray(props.fetchBooks.books.data) &&
             props.googleBook.isLoading == false && 
             (props.googleBook.book==null )){
             props.fetchGBook(props.fetchBooks.books.data.title, props.fetchBooks.books.data.author);
@@ -48,7 +49,7 @@ function BookPage(props){
     return(
         
         <Container>
-        {props.fetchBooks.books === null ? <div></div>
+        {props.fetchBooks.books === null || Array.isArray(props.fetchBooks.books.data) ?  <div></div>
         : 
           <div>
         <Row>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Categories from './Categories.js';
 import LatestAddition from "./LatestAddition.js";
-
+import SearchBar from './SearchBar.js';
 
 class Home extends Component{
 
@@ -17,12 +17,6 @@ class Home extends Component{
         console.log("fire");
        }   
 
-
-    //    componentDidUpdate() {       
-    //     this.props.fetchLatestBooks();
-    //     // this.props.clearGBook();
-    //     console.log("fire");
-    //    }   
 
     render(){
         if(this.props.fetchBooks.books!= null && this.props.fetchBooks.books.data.length !=4){
@@ -42,8 +36,8 @@ class Home extends Component{
 
 
                 <div>
-
-                    <Categories/>
+                    <SearchBar className="mt-5"/>
+                    <Categories className="mt-5"/>
                     <div style={{marginTop:"3vw"}}></div>
 
                     

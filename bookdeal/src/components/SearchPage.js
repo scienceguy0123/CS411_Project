@@ -4,17 +4,15 @@ import {Nav, Navbar, NavDropdown, Col, Row, Container, Modal, Button, Form } fro
 import { Routes, Route, Link, useParams } from 'react-router-dom';
 
 
-function CategoryPage(props){
+function SearchPage(props){
 
-    const {categoryName} = useParams();
+    const {bookTitle} = useParams();
 
     useEffect(() => {
- 
-        props.fetchBookCategory(categoryName);
-        props.clearGBook();
+        props.fetchBookTitle(bookTitle);
     }, [])
 
-    if( props.fetchBooks.books == null || !Array.isArray(props.fetchBooks.books.data)){
+    if(props.fetchBooks.books == null ){
         return(
             <div></div>
         )
@@ -36,4 +34,4 @@ function CategoryPage(props){
 }
 
 
-export default CategoryPage;
+export default SearchPage;

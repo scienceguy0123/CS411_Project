@@ -4,11 +4,13 @@ import Home from './Home.js';
 import Posting from './Posting.js';
 import BookPage from './BookPage.js';
 import CategoryPage from './CategoryPage';
+import SearchPage from './SearchPage.js';
+import YourBooks from './YourBooks.js';
 import{useSelector, useDispatch} from 'react-redux';
 import {connect} from 'react-redux';
 import {registerUser, loginUser, logoutUser, postBook, 
     fetchLatestBooks, fetchBookId, fetchGBook, clearGBook, cleanFetchBook,
-    fetchBookCategory} from '../redux/actionCreators.js';
+    fetchBookCategory, fetchBookTitle, fetchYourBooks, deleteYourBook} from '../redux/actionCreators.js';
 
 import {BrowserRouter,Routes,Route, Navigate} from "react-router-dom";
 
@@ -33,7 +35,10 @@ const mapDispatchToProps = (dispatch) =>{
         fetchGBook: (title, author) => dispatch(fetchGBook(title, author)),
         clearGBook: () => dispatch(clearGBook()),
         cleanFetchBook: () => dispatch(cleanFetchBook()),
-        fetchBookCategory: (category) => dispatch(fetchBookCategory(category))
+        fetchBookCategory: (category) => dispatch(fetchBookCategory(category)),
+        fetchBookTitle: (title) => dispatch(fetchBookTitle(title)),
+        fetchYourBooks: (email) => dispatch(fetchYourBooks(email)),
+        deleteYourBook: (id, email) => dispatch(deleteYourBook(id, email))
     }
 }
 
@@ -85,9 +90,20 @@ class Main extends Component{
                                                                             } />
                         <Route path="/books/category/:categoryName" element = {<CategoryPage 
                                                                                 fetchBooks = {this.props.fetchBooks}
-
+                                                                                clearGBook = {this.props.clearGBook}
                                                                                 fetchBookCategory={this.props.fetchBookCategory}
                                                                                 />} />
+                        <Route path="/books/title/:bookTitle" element = {<SearchPage 
+                                                                            fetchBooks = {this.props.fetchBooks}
+                                                                            fetchBookTitle={this.props.fetchBookTitle}/>} />
+                        
+                        <Route path="/books/your_books/:email" element = {<YourBooks 
+                                                                            user = {this.props.user}
+                                                                            deleteYourBook = {this.props.deleteYourBook}
+                                                                            cleanFetchBook = {this.props.cleanFetchBook}
+                                                                            fetchYourBooks = {this.props.fetchYourBooks}
+                                                                            fetchBooks = {this.props.fetchBooks}
+                                                                            />} />
                         <Route path="*" element={<Navigate to="/" replace />}/>
 
                     </Routes>

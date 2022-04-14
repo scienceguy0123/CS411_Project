@@ -90,6 +90,11 @@ class Header extends Component{
                                     <NavDropdown.Item href="#post">Post a Book</NavDropdown.Item>
                                 </Link>
                             </Nav>
+                            <Nav  >
+                                <Link to={`/books/your_books/${this.props.user.user}`}>
+                                    <NavDropdown.Item href="#post">Your Books</NavDropdown.Item>
+                                </Link>
+                            </Nav>
                             <Nav  onSelect = {this.props.logoutUser}>
                                 <NavDropdown.Item href="#logout">Log Out</NavDropdown.Item>
                             </Nav>

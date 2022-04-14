@@ -177,12 +177,73 @@ export const fetchLatestBooks = () => (dispatch) => {
     })
     .catch(error => dispatch(fetchBooksFailure(error.message)));
 }
+
+export const deleteYourBook = (id, email) => (dispatch) => {
+    dispatch(fetchBooksRequest());
+
+    return fetch(`${baseUrl}/books/id/${id}/${email}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.success){
+            console.log(response);
+            dispatch(fetchBooksSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(fetchBooksFailure(error.message)));
+}
+
+export const fetchYourBooks = (email) => (dispatch) => {
+    dispatch(fetchBooksRequest());
+
+    return fetch(`${baseUrl}/books/your_books/${email}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.success){
+            console.log(response);
+            dispatch(fetchBooksSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(fetchBooksFailure(error.message)));
+}
+
+
+
 export const clearFetchBook = () => (dispatch) =>{
     dispatch(cleanFetchBook());
 }
 export const cleanFetchBook = () => ({
     type:ActionTypes.CLEAN_BOOKS
 });
+
+export const clearGBook = () => (dispatch) =>{
+    dispatch(cleanGBook());
+}
+export const cleanGBook = () => ({
+    type:ActionTypes.CLEAN_GBOOK
+});
+
 
 export const fetchBooksRequest = () => ({
     type: ActionTypes.FETCH_BOOKS_REQUEST
@@ -202,6 +263,31 @@ export const fetchBookId = (bookId) => (dispatch) => {
     dispatch(fetchBooksRequest());
 
     return fetch(`${baseUrl}/books/id/${bookId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.success){
+            console.log(response);
+            dispatch(fetchBooksSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(fetchBooksFailure(error.message)));
+}
+
+export const fetchBookTitle = (title) => (dispatch) => {
+    dispatch(fetchBooksRequest());
+
+    return fetch(`${baseUrl}/books/title/${title}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -275,13 +361,6 @@ export const fetchGBook = (title, author) => (dispatch) => {
     .catch(error => dispatch(fetchGBooksFailure(error.message)));
 }
 
-export const clearGBook = () => (dispatch) =>{
-    dispatch(cleanGBook());
-}
-
-export const cleanGBook = () => ({
-    type:ActionTypes.CLEAN_GBOOK
-});
 
 export const fetchGBooksRequest = () => ({
     type: ActionTypes.FETCH_GBOOKS_REQUEST
