@@ -3,10 +3,12 @@ import Header from './Header.js';
 import Home from './Home.js';
 import Posting from './Posting.js';
 import BookPage from './BookPage.js';
+import CategoryPage from './CategoryPage';
 import{useSelector, useDispatch} from 'react-redux';
 import {connect} from 'react-redux';
 import {registerUser, loginUser, logoutUser, postBook, 
-    fetchLatestBooks, fetchBookId, fetchGBook, clearGBook, cleanFetchBook} from '../redux/actionCreators.js';
+    fetchLatestBooks, fetchBookId, fetchGBook, clearGBook, cleanFetchBook,
+    fetchBookCategory} from '../redux/actionCreators.js';
 
 import {BrowserRouter,Routes,Route, Navigate} from "react-router-dom";
 
@@ -30,7 +32,8 @@ const mapDispatchToProps = (dispatch) =>{
         fetchBookId: (id) => dispatch(fetchBookId(id)),
         fetchGBook: (title, author) => dispatch(fetchGBook(title, author)),
         clearGBook: () => dispatch(clearGBook()),
-        cleanFetchBook: () => dispatch(cleanFetchBook())
+        cleanFetchBook: () => dispatch(cleanFetchBook()),
+        fetchBookCategory: (category) => dispatch(fetchBookCategory(category))
     }
 }
 
@@ -80,6 +83,11 @@ class Main extends Component{
                                                                             fetchGBook = {this.props.fetchGBook}
                                                                             cleanFetchBook = {this.props.cleanFetchBook}/> 
                                                                             } />
+                        <Route path="/books/category/:categoryName" element = {<CategoryPage 
+                                                                                fetchBooks = {this.props.fetchBooks}
+
+                                                                                fetchBookCategory={this.props.fetchBookCategory}
+                                                                                />} />
                         <Route path="*" element={<Navigate to="/" replace />}/>
 
                     </Routes>

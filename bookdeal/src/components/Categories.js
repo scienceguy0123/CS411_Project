@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Nav,ListGroup, Navbar, NavDropdown, Container, Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import { Routes, Route, Link } from 'react-router-dom';
 
 class Categories extends Component{
     constructor(props){
@@ -19,9 +20,11 @@ class Categories extends Component{
                     <ListGroup horizontal style={{paddingleft:"5vw" }} >
                         {this.state.categories.slice(0,3).map((category) => (
                             <Col >
-                                <ListGroup.Item  style={{height: "15vw", width:"15vw" , paddingTop:"5vw"}} >
-                                    <p style={{fontSize:"2vw"}} className="text-center">{`${category}`} </p>
-                                </ListGroup.Item>
+                                <Link to={`/books/category/${category}`}>
+                                    <ListGroup.Item  style={{height: "15vw", width:"15vw" , paddingTop:"5vw"}} >
+                                        <p style={{fontSize:"2vw"}} className="text-center">{`${category}`} </p>
+                                    </ListGroup.Item>
+                                </Link>
                             </Col>
                         ))}
                    </ListGroup>
@@ -33,9 +36,11 @@ class Categories extends Component{
 
                         {this.state.categories.slice(3,6).map((category) => (
                                 <Col >
+                                <Link to={`/books/category/${category}`}>
                                     <ListGroup.Item style={{height: "15vw", width:"15vw", paddingTop:"5vw"}} >
                                         <p style={{fontSize:"2vw"}} className="text-center">{`${category}`} </p>
                                     </ListGroup.Item>
+                                </Link>
                                 </Col>
                             ))}
                     </ListGroup>

@@ -223,6 +223,31 @@ export const fetchBookId = (bookId) => (dispatch) => {
     .catch(error => dispatch(fetchBooksFailure(error.message)));
 }
 
+export const fetchBookCategory = (category) => (dispatch) => {
+    dispatch(fetchBooksRequest());
+
+    return fetch(`${baseUrl}/books/category/${category}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.success){
+            console.log(response);
+            dispatch(fetchBooksSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(fetchBooksFailure(error.message)));
+}
+
 export const fetchGBook = (title, author) => (dispatch) => {
     dispatch(fetchGBooksRequest());
 

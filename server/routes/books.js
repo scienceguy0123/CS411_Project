@@ -44,6 +44,25 @@ booksRouter.get('/id/:bookId', async (req, res) => {
     }
 })
 
+booksRouter.get('/category/:categoryName', async (req, res) => {
+    try{
+        let category = req.params.categoryName;
+        let books = await Book.find({"category": `${category}`}).sort({'createdAt': 'desc'})  ;
+        res.status(200).json({
+            status: 200,
+            data: books,
+            success:true 
+        })
+
+    } catch(err){
+        res.status(400).json({
+            status: 400,
+            message:err.message,
+            success:false
+        });
+    }
+})
+
 booksRouter.get('/googleBook/:title/:author', async (req, res) => {
     try{
         let title = req.params.title;
