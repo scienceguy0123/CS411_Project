@@ -6,6 +6,8 @@ const config = require('config');
 var express = require('express');
 const booksRouter = express.Router();
 let gbook_APIkey = config.get('gbook_APIkey');
+let nytBook_APIkey = config.get('nytBook_APIkey');
+
 
 booksRouter.get('/latest', async (req, res) => {
     // res.end('Will send all the dishes to you');
@@ -145,6 +147,28 @@ booksRouter.get('/googleBook/:title/:author', async (req, res) => {
             res.status(200).json({
                 status:200,
                 data: response,
+                success:true
+            }))
+
+
+    } catch(err){
+        res.status(400).json({
+            status: 400,
+            message:err.message,
+            success:false
+        });
+    }
+})
+
+booksRouter.get('/nytBooks', async (req, res) => {
+    try{
+        
+        fetch(`https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${nytBook_APIkey}`)
+        .then(response => response.json())
+        .then(response => 
+            res.status(200).json({
+                status:200,
+                data: response.results.lists,
                 success:true
             }))
 

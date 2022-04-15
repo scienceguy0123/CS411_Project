@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Categories from './Categories.js';
 import LatestAddition from "./LatestAddition.js";
 import SearchBar from './SearchBar.js';
+import NYTBooks from './NYTBooks.js';
 
 class Home extends Component{
 
@@ -13,6 +14,7 @@ class Home extends Component{
 
     componentDidMount() {       
         this.props.fetchLatestBooks();
+        this.props.fetchNYTBooks();
         this.props.clearGBook();
         console.log("fire");
        }   
@@ -42,7 +44,7 @@ class Home extends Component{
 
                     
                     <LatestAddition fetchBooks = {this.props.fetchBooks} fetchLatestBooks = {this.props.fetchLatestBooks}/>
-
+                    <NYTBooks  nytBooks ={this.props.nytBooks}/>
                 </div>
             }
         </div>

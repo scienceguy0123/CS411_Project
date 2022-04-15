@@ -228,7 +228,30 @@ export const fetchYourBooks = (email) => (dispatch) => {
     .catch(error => dispatch(fetchBooksFailure(error.message)));
 }
 
+export const fetchNYTBooks = () => (dispatch) => {
+    dispatch(fetchNYTBooksRequest());
 
+    return fetch(`${baseUrl}/books/nytBooks`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.success){
+            console.log(response);
+            dispatch(fetchNYTBooksSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(fetchNYTBooksFailure(error.message)));
+}
 
 export const clearFetchBook = () => (dispatch) =>{
     dispatch(cleanFetchBook());
@@ -256,6 +279,21 @@ export const fetchBooksSuccess = (info) => ({
 
 export const fetchBooksFailure = (errMess) => ({
     type: ActionTypes.FETCH_BOOKS_FAILURE,
+    payload: errMess
+})
+
+
+export const fetchNYTBooksRequest = () => ({
+    type: ActionTypes.FETCH_NYTBOOKS_REQUEST
+});
+
+export const fetchNYTBooksSuccess = (info) => ({
+    type: ActionTypes.FETCH_NYTBOOKS_SUCCESS,
+    payload: info
+});
+
+export const fetchNYTBooksFailure = (errMess) => ({
+    type: ActionTypes.FETCH_NYTBOOKS_FAILURE,
     payload: errMess
 })
 
