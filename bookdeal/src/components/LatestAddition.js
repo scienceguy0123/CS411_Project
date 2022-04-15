@@ -9,11 +9,7 @@ class LatestAddition extends Component{
         this.state = {
         }
     }
-    // componentDidMount() {       
-    //     this.props.fetchLatestBooks();
-    //     // this.props.clearGBook();
-    //     console.log("fire");
-    //    }   
+
 
     render(){
         if (this.props.fetchBooks.books === null) {

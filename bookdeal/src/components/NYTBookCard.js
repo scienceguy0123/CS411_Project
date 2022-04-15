@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Container, Card, Row } from 'react-bootstrap';
 import { Routes, Route, Link } from 'react-router-dom';
 
-class BookCard extends Component{
+class NYTBookCard extends Component{
     constructor(props){
         super(props);
 
@@ -12,23 +12,23 @@ class BookCard extends Component{
 
     render(){
         return(
-            <Link to={`/books/id/${this.props.book._id}`}>
-                    <Card style={{ width: '15vw' }}>
-                    <Card.Img variant="top" src={this.props.book.images[0]} />
+            <a href={`${this.props.book.amazon_product_url}`}>
+                    <Card style={{ width: '13vw' }}>
+                    <Card.Img variant="top" src={this.props.book.book_image} />
 
                             <Card.Body>
                                 <Card.Title>{this.props.book.title}</Card.Title>
                                 <Card.Text>
-                                {`\$${this.props.book.price}`}
+                                {`${this.props.book.author}`}
                                 </Card.Text>
                             </Card.Body>
                     </Card>
 
+            </a>
 
-
-            </Link>
+           
         )
     }
 }
 
-export default BookCard;
+export default NYTBookCard;

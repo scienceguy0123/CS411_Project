@@ -10,7 +10,8 @@ import{useSelector, useDispatch} from 'react-redux';
 import {connect} from 'react-redux';
 import {registerUser, loginUser, logoutUser, postBook, 
     fetchLatestBooks, fetchBookId, fetchGBook, clearGBook, cleanFetchBook,
-    fetchBookCategory, fetchBookTitle, fetchYourBooks, deleteYourBook} from '../redux/actionCreators.js';
+    fetchBookCategory, fetchBookTitle, fetchYourBooks, deleteYourBook,
+    fetchNYTBooks} from '../redux/actionCreators.js';
 
 import {BrowserRouter,Routes,Route, Navigate} from "react-router-dom";
 
@@ -20,7 +21,8 @@ const mapStateToProps = state =>{
         user: state.user,
         postBook: state.postBook,
         fetchBooks: state.fetchBooks,
-        googleBook: state.googleBook
+        googleBook: state.googleBook,
+        nytBooks: state.nytBooks
     }
 }
  
@@ -38,7 +40,8 @@ const mapDispatchToProps = (dispatch) =>{
         fetchBookCategory: (category) => dispatch(fetchBookCategory(category)),
         fetchBookTitle: (title) => dispatch(fetchBookTitle(title)),
         fetchYourBooks: (email) => dispatch(fetchYourBooks(email)),
-        deleteYourBook: (id, email) => dispatch(deleteYourBook(id, email))
+        deleteYourBook: (id, email) => dispatch(deleteYourBook(id, email)),
+        fetchNYTBooks: () => dispatch(fetchNYTBooks())
     }
 }
 
@@ -72,13 +75,16 @@ class Main extends Component{
                                                                 fetchLatestBooks = {this.props.fetchLatestBooks}
                                                                 fetchBooks = {this.props.fetchBooks}
                                                                 clearGBook = {this.props.clearGBook}
+                                                                fetchNYTBooks = {this.props.fetchNYTBooks}
+                                                                nytBooks ={this.props.nytBooks}
                                                                 />} />
                         <Route path="/" element = { <Home register={this.props.register}
                                                                 user = {this.props.user}
                                                                 fetchLatestBooks = {this.props.fetchLatestBooks}/>}
                                                                 fetchBooks = {this.props.fetchBooks}
                                                                 clearGBook = {this.props.clearGBook}
-
+                                                                fetchNYTBooks = {this.props.fetchNYTBooks}
+                                                                nytBooks ={this.props.nytBooks}
                                                                 />
              
                         <Route path="/post_book" element = {<Posting user={this.props.user} postBook={this.props.postBook}/>}/>
