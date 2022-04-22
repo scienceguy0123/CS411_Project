@@ -11,7 +11,8 @@ import {connect} from 'react-redux';
 import {registerUser, loginUser, logoutUser, postBook, 
     fetchLatestBooks, fetchBookId, fetchGBook, clearGBook, cleanFetchBook,
     fetchBookCategory, fetchBookTitle, fetchYourBooks, deleteYourBook,
-    fetchNYTBooks} from '../redux/actionCreators.js';
+    fetchNYTBooks,
+    handleGoogleLogin} from '../redux/actionCreators.js';
 
 import {BrowserRouter,Routes,Route, Navigate} from "react-router-dom";
 
@@ -41,7 +42,8 @@ const mapDispatchToProps = (dispatch) =>{
         fetchBookTitle: (title) => dispatch(fetchBookTitle(title)),
         fetchYourBooks: (email) => dispatch(fetchYourBooks(email)),
         deleteYourBook: (id, email) => dispatch(deleteYourBook(id, email)),
-        fetchNYTBooks: () => dispatch(fetchNYTBooks())
+        fetchNYTBooks: () => dispatch(fetchNYTBooks()),
+        handleGoogleLogin: (googleData) => dispatch(handleGoogleLogin(googleData))
     }
 }
 
@@ -65,6 +67,7 @@ class Main extends Component{
                         loginUser = {this.props.loginUser}
                         logoutUser = {this.props.logoutUser}
                         user={this.props.user}
+                        handleGoogleLogin={this.props.handleGoogleLogin}
                         />
 
          

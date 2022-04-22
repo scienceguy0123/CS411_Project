@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Nav, Navbar, NavDropdown, Container, Modal, Button, Form } from 'react-bootstrap';
 import { Routes, Route, Link } from 'react-router-dom';
+import GoogleLogin from 'react-google-login';
 
 class Header extends Component{
     constructor(props){
@@ -59,6 +60,12 @@ class Header extends Component{
         this.handleLoginModal();
         this.props.loginUser({loginEmail: this.state.loginEmail, loginPassword: this.state.loginPassword});
     }
+    
+    // handleLogin(event){
+    //     event.preventDefault();
+    //     this.handleLoginModal();
+    //     this.props.loginUser({loginEmail: this.state.loginEmail, loginPassword: this.state.loginPassword});
+    // }
 
     testPrint() {
         console.log(this.state);
@@ -137,6 +144,14 @@ class Header extends Component{
                             Submit
                         </Button>
                     </Form>
+
+                    <GoogleLogin
+                        clientId="13981854382-b5qioc07m8t3fbm55909v5l08rgsmt8t.apps.googleusercontent.com"
+                        buttonText="Log in with Google"
+                        onSuccess={ this.props.handleGoogleLogin}
+                        onFailure = {() => {return}}
+                        cookiePolicy={'single_host_origin'}
+                        ></GoogleLogin>
                     </Modal.Body>
                 </Modal>
 
