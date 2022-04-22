@@ -413,3 +413,40 @@ export const fetchGBooksFailure = (errMess) => ({
     type: ActionTypes.FETCH_GBOOKS_FAILURE,
     payload: errMess
 })
+
+export const handleGoogleLogin =  (googleData) => (dispatch) => {
+    console.log(googleData);
+    dispatch(loginRequest(googleData.profileObj));
+    return fetch(`${baseUrl}/users/google-login`, {
+      method: 'POST',
+      body: JSON.stringify({
+        token: googleData.tokenId,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(response => response.json())
+    .then(response => {
+        if(response.success){
+            console.log(response);
+            dispatch(loginSuccess(response));
+        }
+        else{
+            console.log(response);
+            let error = new Error('Error: ' + response.message);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(loginError(error.message)));
+    
+
+    // const data = await res.json();
+    // console.log(data);
+    // setLoginData(data);
+    // localStorage.setItem('loginData', JSON.stringify(data));
+  };
+//   const handleGoogleLogout = () => {
+//     localStorage.removeItem('loginData');
+//     setLoginData(null);
+//   };
