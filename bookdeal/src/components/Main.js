@@ -20,7 +20,7 @@ const mapStateToProps = state =>{
     return{
         register: state.register,
         user: state.user,
-        postBook: state.postBook,
+        postBookP: state.postBook,
         fetchBooks: state.fetchBooks,
         googleBook: state.googleBook,
         nytBooks: state.nytBooks
@@ -90,7 +90,7 @@ class Main extends Component{
                                                                 nytBooks ={this.props.nytBooks}
                                                                 />
              
-                        <Route path="/post_book" element = {<Posting user={this.props.user} postBook={this.props.postBook}/>}/>
+                        <Route path="/post_book" element = {<Posting user={this.props.user} postBook={this.props.postBook} postBookP={this.props.postBookP}/>}/>
                         <Route path="/books/id/:bookId" element ={<BookPage fetchBookId={this.props.fetchBookId} 
                                                                             fetchBooks = {this.props.fetchBooks}
                                                                             googleBook = {this.props.googleBook}

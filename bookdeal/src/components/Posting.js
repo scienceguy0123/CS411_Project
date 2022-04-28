@@ -29,9 +29,27 @@ class Posting extends Component{
     }
     componentDidUpdate(prevProps){
 
-        if(this.props.postBook.book && prevProps.postBook.book==null){
-            alert("Item uploaded. Thank you.")
+        if(this.props.postBookP.isLoading ==  false && prevProps.postBookP.isLoading=== true){
+            alert("Item uploaded. Thank you.");
+            this.setState({ 
+                title:'',
+                price:'...',
+                description:'',
+                category:'',
+                author:'',
+                sellerEmail:this.props.user.user,
+                validate: {
+                    ItemNameState:'',
+                    ItemType1State:'',
+                    ItemDescriptionState:'',
+                    ItemPriceState:'',
+                    ImageState:''
+                },
+                images:[]});
 
+        }
+        if(this.props.postBookP.errMess && prevProps.postBookP.errMess == null){
+            alert(this.props.postBookP.errMess);
         }
     }
     handleChange = (event) =>{
@@ -71,6 +89,13 @@ class Posting extends Component{
     }
 
     render() {
+        if(this.props.user.user === null){
+            return(
+
+                <div>Please Log In First</div>
+
+            )
+        }
         return(
             <>
             <Container>
@@ -79,15 +104,16 @@ class Posting extends Component{
                 <Form className='mt-5'>
                     <Form.Group className="mb-3" >
                         <Form.Label>Title</Form.Label>
-                        <Form.Control name="title" onChange={this.handleChange}/>
+                        <Form.Control name="title" value={this.state.title} onChange={this.handleChange}/>
                     </Form.Group>
+
                     <Form.Group className="mb-3" >
                         <Form.Label>Author</Form.Label>
-                        <Form.Control name="author" onChange={this.handleChange}/>
+                        <Form.Control name="author" value={this.state.author} onChange={this.handleChange}/>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="category">
                         <Form.Label>Category</Form.Label>
-                        <Form.Select name="category" aria-label="Default select example" onChange={this.handleChange}>
+                        <Form.Select name="category" value={this.state.category} aria-label="Default select example" onChange={this.handleChange}>
                         <option value= "0">...</option>
                         <option value= "Textbook">Textbook</option>
                         <option value="Romance">Romance</option>
@@ -99,17 +125,17 @@ class Posting extends Component{
                     
                     <Form.Group className="mb-3" controlId="price">
                         <Form.Label>Price</Form.Label>
-                        <Form.Control name="price" type="number" onChange={this.handleChange}  />
+                        <Form.Control name="price" value={this.state.price} type="number" onChange={this.handleChange}  />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Description</Form.Label>
-                        <Form.Control name="description" onChange={this.handleChange} />
+                        <Form.Control name="description" value={this.state.description} onChange={this.handleChange} />
                     </Form.Group>
                     
                     <Form.Group className="mb-3" controlId="images">
                         <Form.Label>Images</Form.Label>
-                        <ImageUpload handleImages={this.handleImages}/>
+                        <ImageUpload postBookP={this.props.postBookP} handleImages={this.handleImages}/>
                     </Form.Group>
                     
                     <br></br>

@@ -13,6 +13,14 @@ function YourBooks(props){
         props.cleanFetchBook();
         props.fetchYourBooks(email);
     }, [])
+    
+    if(props.user.user === null){
+        return(
+
+            <div>Please Log In First</div>
+
+        )
+    }
 
     if( props.fetchBooks.isLoading || !Array.isArray(props.fetchBooks.books.data) ){
         return(

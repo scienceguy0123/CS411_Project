@@ -126,8 +126,9 @@ function BookPage(props){
         </div>  
         }
         
-
-        {props.googleBook.book === null ? <div></div> :
+        
+        {props.googleBook.book === null ? <dic>Loading</dic> 
+        : props.googleBook.book.length === 0 ? <div>Book not available in Google book database, seller may submit wrong title or author's name </div> :
         <Row>
         <Container>
             <Row>

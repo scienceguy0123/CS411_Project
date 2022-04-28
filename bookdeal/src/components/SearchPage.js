@@ -12,11 +12,13 @@ function SearchPage(props){
         props.fetchBookTitle(bookTitle);
     }, [])
 
-    if(props.fetchBooks.books == null ){
+    if(props.fetchBooks.books == null || !Array.isArray(props.fetchBooks.books.data)){
         return(
             <div></div>
         )
     }
+
+
 
     return(
         <Container>
