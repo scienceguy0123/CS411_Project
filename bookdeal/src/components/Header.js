@@ -24,9 +24,14 @@ class Header extends Component{
         this.testPrint = this.testPrint.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
-
+        this.handleGLogin = this.handleGLogin.bind(this);
     }
-    
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        if (this.props.user.errMess !== null && prevProps.user.errMess == null ) {
+          alert(this.props.user.errMess);
+        }
+      }
     handleLoginModal() {
         this.setState({
             isLoginModalOpen: ! this.state.isLoginModalOpen
@@ -61,11 +66,10 @@ class Header extends Component{
         this.props.loginUser({loginEmail: this.state.loginEmail, loginPassword: this.state.loginPassword});
     }
     
-    // handleLogin(event){
-    //     event.preventDefault();
-    //     this.handleLoginModal();
-    //     this.props.loginUser({loginEmail: this.state.loginEmail, loginPassword: this.state.loginPassword});
-    // }
+    handleGLogin(event){
+        this.handleLoginModal();
+        this.props.handleGoogleLogin(event);
+    }
 
     testPrint() {
         console.log(this.state);
@@ -148,7 +152,7 @@ class Header extends Component{
                     <GoogleLogin
                         clientId="13981854382-b5qioc07m8t3fbm55909v5l08rgsmt8t.apps.googleusercontent.com"
                         buttonText="Log in with Google"
-                        onSuccess={ this.props.handleGoogleLogin}
+                        onSuccess={ this.handleGLogin }
                         onFailure = {() => {return}}
                         cookiePolicy={'single_host_origin'}
                         ></GoogleLogin>

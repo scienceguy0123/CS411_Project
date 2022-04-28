@@ -1,4 +1,7 @@
 # CS411_Project
+
+Needs to have Node >= 14.0.0 and npm >= 5.6 to run the application
+
 To run back end:
 1. cd to server
 2. run "npm install" in terminal
@@ -12,4 +15,3 @@ To run front end:
 4. go to "http://localhost:3000"
 
 
-test test

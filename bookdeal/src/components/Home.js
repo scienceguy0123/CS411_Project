@@ -21,7 +21,7 @@ class Home extends Component{
 
 
     render(){
-        if(this.props.fetchBooks.books!= null && this.props.fetchBooks.books.data.length !=4){
+        if(this.props.fetchBooks.books!= null && !Array.isArray(this.props.fetchBooks.books.data)){
             return (
                 <div></div>
             )

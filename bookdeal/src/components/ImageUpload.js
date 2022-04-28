@@ -12,16 +12,16 @@ class ImageUpload extends Component {
     this.onImageRemove = this.onImageRemove.bind(this);
   }
 
-//   componentDidUpdate(prevProps) {
-//     // Typical usage (don't forget to compare props):
-//     if (this.props.postItems.items !==  prevProps.postItems.items ) {
-//         this.setState({
-//           newImages: []
-//         });
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.postBookP.isLoading == false &&  prevProps.postBookP.isLoading == true ) {
+        this.setState({
+          newImages: []
+        });
 
         
-//     }
-//   }
+    }
+  }
 
   fileChangedHandler(event) {
     var fileInput = false;

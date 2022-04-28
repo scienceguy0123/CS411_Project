@@ -29,7 +29,7 @@ userRouter.post("/register", async (req, res) => {
     try {
         let user = await User.findOne({
             registerEmail: req.body.loginEmail,
-            registerPassword: req.body.loginPassword
+            registerPassword1: req.body.loginPassword
         });
 
         if(user){

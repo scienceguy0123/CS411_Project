@@ -406,7 +406,7 @@ export const fetchGBooksRequest = () => ({
 
 export const fetchGBooksSuccess = (info) => ({
     type: ActionTypes.FETCH_GBOOKS_SUCCESS,
-    payload: info.data.items[0]
+    payload: info.data.totalItems == 0 ? [] : info.data.items[0]
 });
 
 export const fetchGBooksFailure = (errMess) => ({
@@ -441,12 +441,5 @@ export const handleGoogleLogin =  (googleData) => (dispatch) => {
     .catch(error => dispatch(loginError(error.message)));
     
 
-    // const data = await res.json();
-    // console.log(data);
-    // setLoginData(data);
-    // localStorage.setItem('loginData', JSON.stringify(data));
+
   };
-//   const handleGoogleLogout = () => {
-//     localStorage.removeItem('loginData');
-//     setLoginData(null);
-//   };
