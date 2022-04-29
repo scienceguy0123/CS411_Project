@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {Nav, Navbar, NavDropdown, Container, Modal, Button, Form } from 'react-bootstrap';
 import { Routes, Route, Link } from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
+// import {google_clientId} from '../config/default.json'
+
+
 
 class Header extends Component{
     constructor(props){
@@ -17,7 +20,7 @@ class Header extends Component{
             registerPassword2: ""
 
         }
-        
+        this.default = require('../config/default.json');
         this.handleLoginModal = this.handleLoginModal.bind(this);
         this.handleRegisterModal = this.handleRegisterModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -74,9 +77,11 @@ class Header extends Component{
     testPrint() {
         console.log(this.state);
     }
+    
 
     render() {
         return(
+            
             <>
                 <Navbar bg="dark" variant="dark">
                     <Container>
@@ -150,7 +155,7 @@ class Header extends Component{
                     </Form>
 
                     <GoogleLogin
-                        clientId="13981854382-b5qioc07m8t3fbm55909v5l08rgsmt8t.apps.googleusercontent.com"
+                        clientId={this.default.google_clientId}
                         buttonText="Log in with Google"
                         onSuccess={ this.handleGLogin }
                         onFailure = {() => {return}}
