@@ -140,9 +140,16 @@ class Posting extends Component{
                     
                     <br></br>
                     
-                    <Button  variant="primary" type="submit" onClick={this.handleSubmit}>
+                    <Button  variant="primary" type="submit" onClick={this.handleSubmit}
+                    disabled={this.state.title === "" ||
+                            this.state.author === "" ||
+                            this.state.category === ""||
+                            this.state.description === "" ||
+                            this.state.price === "" ||
+                            this.state.images.length === 0}>
                         Submit
                     </Button>
+                    <h5>You need to fill out every field</h5>
                 </Form>
             </Container>   
             </>

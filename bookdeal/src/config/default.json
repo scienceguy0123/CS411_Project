@@ -1,0 +1,6 @@
+{
+    "gbook_APIkey": "AIzaSyDlL9bTd9MbpJJ4-r9EFbEa2moHcG_fCPo",
+    "google_clientId": "13981854382-b5qioc07m8t3fbm55909v5l08rgsmt8t.apps.googleusercontent.com",
+    "nytBook_APIkey":"sePCD6AcdKDYKqszbmqTSVKfxljwOGzp",
+    "dbUrl": "mongodb+srv://411team:2000123@cluster0.hhxsc.mongodb.net/411project?retryWrites=true&w=majority"
+}
