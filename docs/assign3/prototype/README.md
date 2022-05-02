@@ -2,8 +2,9 @@
 To run back end:
 1. cd to server
 2. run "npm install" in terminal
-3. run "node index.js" in terminal
-4. (optional) go to  "http://localhost:3001"
+3. config folder that includes API keys is not in github repo, please send email to maxchou@bu.edu to request the folder, put config filein the server folder
+4. run "node index.js" in terminal
+5. (optional) go to  "http://localhost:3001"
 
 To run front end:
 1. cd to gBook_api_demo
